@@ -1,8 +1,6 @@
 # Backend
 backend/__pycache__/
 backend/venv/
-backend/*.pkl
-backend/parking_data.csv
 
 # Frontend
 frontend/node_modules/
