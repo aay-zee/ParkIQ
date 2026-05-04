@@ -105,16 +105,26 @@ export default function AdminHome() {
               onPress={() => sendBarrier("OPEN")}
             >
               <Text style={s.controlBtnIcon}>↑</Text>
-              <Text style={s.controlBtnText}>Open Gate</Text>
+              <Text style={s.controlBtnText}>Open</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[s.controlBtn, { backgroundColor: "#FFA500" }]}
+              onPress={() => sendBarrier("AUTO")}
+            >
+              <Text style={s.controlBtnIcon}>⟳</Text>
+              <Text style={s.controlBtnText}>Auto</Text>
             </TouchableOpacity>
             <TouchableOpacity
               style={[s.controlBtn, { backgroundColor: "#ff4757" }]}
               onPress={() => sendBarrier("CLOSE")}
             >
               <Text style={s.controlBtnIcon}>↓</Text>
-              <Text style={s.controlBtnText}>Close Gate</Text>
+              <Text style={s.controlBtnText}>Close</Text>
             </TouchableOpacity>
           </View>
+          <Text style={s.controlHint}>
+            Open / Close overrides the gate for 30 s. Auto returns to sensor-based control.
+          </Text>
         </View>
 
         {/* Parking Grid */}
@@ -228,7 +238,14 @@ const s = StyleSheet.create({
     textAlign: "center",
     marginBottom: 16,
   },
-  controlRow: { flexDirection: "row", gap: 12 },
+  controlRow: { flexDirection: "row", gap: 10 },
+  controlHint: {
+    fontSize: 11,
+    color: "#4a5578",
+    textAlign: "center",
+    marginTop: 14,
+    lineHeight: 16,
+  },
   controlBtn: {
     flex: 1,
     borderRadius: 14,

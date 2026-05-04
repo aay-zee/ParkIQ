@@ -10,8 +10,8 @@ import {
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-const ADMIN_USER = "admin";
-const ADMIN_PASS = "parkiq2026";
+const ADMIN_USER = process.env.EXPO_PUBLIC_ADMIN_USER;
+const ADMIN_PASS = process.env.EXPO_PUBLIC_ADMIN_PASS;
 
 export default function AdminLogin() {
   const router = useRouter();
