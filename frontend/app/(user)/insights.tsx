@@ -12,15 +12,15 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 
 const BACKEND_URL = "https://parkiq-backend.onrender.com";
-const DAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const FULL_DAYS = [
-  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
+  "Sunday",
 ];
 const W = Dimensions.get("window").width - 48;
 
