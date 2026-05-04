@@ -11,9 +11,9 @@ rows = []
 for week in range(8):
     for day in range(7):
         for hour in range(24):
-            if day < 5:  # Monday–Friday
-                if 7 <= hour < 8:
-                    occupancy = random.uniform(0.40, 0.65)
+            if day < 5:  # Monday–Friday (8 AM – 8 PM)
+                if hour < 8 or hour >= 20:
+                    occupancy = 0.0
                 elif 8 <= hour <= 10:
                     occupancy = random.uniform(0.75, 0.95)
                 elif hour == 11:
@@ -25,13 +25,15 @@ for week in range(8):
                 elif 16 <= hour <= 18:
                     occupancy = random.uniform(0.70, 0.90)
                 else:
-                    occupancy = random.uniform(0.05, 0.20)
+                    occupancy = random.uniform(0.10, 0.25)
 
-            elif day == 5:  # Saturday
-                if 10 <= hour <= 14:
+            elif day == 5:  # Saturday (8 AM – 8 PM)
+                if hour < 8 or hour >= 20:
+                    occupancy = 0.0
+                elif 10 <= hour <= 14:
                     occupancy = random.uniform(0.15, 0.35)
                 else:
-                    occupancy = random.uniform(0.02, 0.15)
+                    occupancy = random.uniform(0.05, 0.15)
 
             else:  # Sunday — university closed
                 occupancy = 0.0
