@@ -33,9 +33,10 @@ def predict(hour: int, day: int):
 
 @app.get("/predict/next-hours")
 def predict_next_hours(hours: int = 6):
-    from datetime import datetime, timedelta
+    from datetime import datetime, timedelta, timezone
     results = []
-    now = datetime.now()
+    PKT = timezone(timedelta(hours=5))
+    now = datetime.now(PKT)
     for i in range(hours):
         future = now + timedelta(hours=i)
         hour = future.hour
