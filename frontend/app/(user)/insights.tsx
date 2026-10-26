@@ -256,7 +256,6 @@ export default function InsightsScreen() {
               rulesColor="#1a3bff15"
               isAnimated
               animationDuration={600}
-              showGradient
             />
           </View>
         )}

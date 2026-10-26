@@ -3,10 +3,10 @@ import { db } from "@/lib/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import Paho from "paho-mqtt";
 
-const MQTT_HOST = "5b0e9d98abd142e4a81ce34960a46917.s1.eu.hivemq.cloud";
-const MQTT_PORT = 8884;
-const MQTT_USER = "parkiq_esp";
-const MQTT_PASS = "Parkiq@2026";
+const MQTT_HOST = process.env.EXPO_PUBLIC_MQTT_HOST;
+const MQTT_PORT = Number(process.env.EXPO_PUBLIC_MQTT_PORT ?? "8884");
+const MQTT_USER = process.env.EXPO_PUBLIC_MQTT_USER;
+const MQTT_PASS = process.env.EXPO_PUBLIC_MQTT_PASS;
 
 export function useMQTT() {
   const [spots, setSpots] = useState<number[]>([0, 0, 0, 0]);
@@ -14,6 +14,12 @@ export function useMQTT() {
   const clientRef = useRef<any>(null);
 
   useEffect(() => {
+    if (!MQTT_HOST || !MQTT_USER || !MQTT_PASS ||
+        !Number.isInteger(MQTT_PORT) || MQTT_PORT < 1 || MQTT_PORT > 65535) {
+      console.warn("Configure EXPO_PUBLIC_MQTT_* in frontend/.env before connecting.");
+      return;
+    }
+
     const mqttClient = new Paho.Client(
       MQTT_HOST,
       MQTT_PORT,
